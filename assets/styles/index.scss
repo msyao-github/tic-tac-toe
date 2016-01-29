@@ -2,6 +2,41 @@ $background-color: #4e4e4e;
 $font-color: #dfdfdf;
 
 body {
-  background-color: $background-color;
-  color: $font-color;
+  background-color: white;
+  position: center;
+}
+
+.square{
+    width:100px;
+    height:100px;
+}
+
+.v{
+    border-left:1px solid #000;
+    border-right:1px solid #000;
+}
+
+.h{
+    border-top:1px solid #000;
+    border-bottom:1px solid #000;
+}
+
+#container{
+    text-align:center;
+    margin: 0 auto;
+}
+
+.invisible {
+    visibility:hidden;
+}
+.visible {
+    visibility:visible;
+}
+
+table {
+    margin: 0 auto;
+    margin-top: 5em;
+    background-color: #FAFAFA;
+    text-align:center;
+    font: 400 30px/1.5 'Pacifico', Helvetica, sans-serif;
 }
