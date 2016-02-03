@@ -10,29 +10,34 @@ require('./example');
 // load sass manifest
 require('../styles/index.scss');
 
+
+
 function startGame() {
-  for (var i = 1; i <= 9; i = i + 1) {
+  for (var i = 1; i < 10; i++) {
     clearBox(i);
   }
-  document.turn = "X";
+  document.turn = "X"; //game always starts with X, 0 has 50% chance of next turn
   if (Math.random() < 0.5) {
     document.turn = "O";
   }
   document.winner = null;
   setMessage("Player "+document.turn + " gets to start.");
-}
+} //if no previous winner still start game.
 
 function setMessage(msg) {
-  document.getElementById("message").innerText = msg;
+  document.getElementById("message").textContent = msg;
 }
-//turns the document id "message" into messages defined by functions below
 
+
+//turns "message" into messages defined by functions below
+
+//if all boxes occupied and there's a winner, 1st message
 function nextMove(square) {
   if (document.winner !== null) {
     setMessage("Player "+ document.winner + " has won. Restart the game!");
-  } else if (square.innerText == "") {
+  } else if (square.textContent == "") {
     //if square is empty, let player move
-    square.innerText = document.turn;
+    square.textContent = document.turn;
     switchTurn();
   } else {
     setMessage("That square is occupied.");
@@ -40,7 +45,6 @@ function nextMove(square) {
 }
 
 function switchTurn() {
-
   if (checkForWinner(document.turn)) {
     setMessage("Woohoo, Player " + document.turn + "!  You win!");
     document.winner = document.turn;
@@ -55,8 +59,9 @@ function switchTurn() {
   }
 }
 
+
 function checkForWinner(move) {
-  var result = false;
+  let result = false;
   if (checkRow(1, 2, 3, move) ||
     checkRow(4, 5, 6, move) ||
     checkRow(7, 8, 9, move) ||
@@ -81,19 +86,19 @@ function checkForTie(){
 
 
 function checkRow(a, b, c, move) {
-  var result = false;
+  var winner = false;
   if (getBox(a) === move && getBox(b) === move && getBox(c) === move) {
-    result = true;
-  } //check to see if squares have 3 in a row
+    winner = true;
+  } //check to see if squares have 3 in a row for checkForWinner
   return result;
 }
 //reference the s1-9 boxes
 function getBox(number) {
-  return document.getElementById("s" + number).innerText;
+  return document.getElementById("s" + number).textContent;
 }
 
 function clearBox(number) {
-  document.getElementById("s" + number).innerText = "";
+  document.getElementById("s" + number).textContent = "";
 }
 
 $(document).ready(() => {
