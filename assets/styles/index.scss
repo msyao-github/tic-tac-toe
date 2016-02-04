@@ -1,79 +1,53 @@
-$background-color: #4e4e4e;
-$font-color: #dfdfdf;
-body {
+
+$box-shadow:8px 5px 5px #888;
+$green-color:#66CDAA;
+
+.container{
+  margin: 0 auto;
+  position: center;
   padding: 1em;
-  margin: 0 auto;
 }
 
-h1 {
-   text-align: center;
-   font-family: 'Pacifico';
-   font-size: 33px;
-   line-height: 30pt;
-   color: #66CDAA;
-}
-.top-line {
-   text-align: center;
-   font-family: 'Rosario';
-   font-size: 22px;
-   color: #666;
-}
-
-p {
-  margin: 0 auto;
+//new game
+.restart-button{
+  font-family: "Pacifico", Times, serif;
+  font-size: 36px;
   text-align: center;
+  color: $green-color; //green
+  letter-spacing: 3px;
 }
 
-a:link {
-  color: white;
-  text-decoration: none;
-}
-#button{
-  width: 115px;
-  margin: 0 auto;
+.messages{
   text-align: center;
-}
-.btn {
-  font-family: 'Rosario', sans-serif;;
-  font-size: 18px;
-  background: #4ae6ad;
-  background-image: -webkit-linear-gradient(top, #4ae6ad, #46d997);
-  background-image: -moz-linear-gradient(top, #4ae6ad, #46d997);
-  background-image: -ms-linear-gradient(top, #4ae6ad, #46d997);
-  background-image: -o-linear-gradient(top, #4ae6ad, #46d997);
-  background-image: linear-gradient(to bottom, #4ae6ad, #46d997);
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
-  border-radius: 28px;
-  color: #ffffff;
-  font-size: 18px;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
+  font-size: 22px;
+  font-family: "Rosario", sans-serif;
 }
 
-.btn:hover {
-  background: #3cb0fd;
-  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
-  text-decoration: none;
-}
-
-
-
-//board table styles
-table {
+.ticboard{
   margin: 0 auto;
-
+  vertical-align: top;
 }
-td {
-   height: 115px;
-   width: 115px;
-   text-align: center;
-   font-family: sans-serif;
-   font-size: 40pt;
-   border: 1px solid Grey;
-   text-transform: uppercase; //Will change into images
+
+.box {
+  height: 130px;
+  width: 130px;
+  font-color: black;
+  text-align: center;
+  font-size: 34px;
+  border: 2px solid black;
+  box-shadow: $box-shadow;//grey
+  -webkit-box-shadow: $box-shadow;
+  -moz-box-shadow: $box-shadow;
+}
+
+
+tr, td{
+  text-align: center;
+  font-family: "Rosario", sans-serif;
+  font-size: 15px;
+}
+.score-number{
+  font-family: "Rosario", sans-serif;
+  font-size: 25px;
+  color: $green-color; //green
 }
