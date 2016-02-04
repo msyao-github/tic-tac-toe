@@ -1,40 +1,55 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <script src="assets/scripts/index.js"></script> <!--it doesn't work unless linked-->
       <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
       <link href='https://fonts.googleapis.com/css?family=Rosario' rel='stylesheet' type='text/css'>
       <link rel="icon" href="assets/images/favico.png" type="image/x-icon"/>
       <title>Tic Tac Toe Game</title>
     </head>
+    <body>
+      <div class="container">
+              <h1>Go toe-to-toe in Tic-Tac-Toe!</h1>
+              <p class="messages"><br></p>
 
-      <body onload="startGame();">
-    		<h1>Ready to go toe-to-toe in Tic Tac Toe?</h1>
-        <p><img src="assets/images/prof-x.gif" alt="Professor X" height="34"> <img src="assets/images/oprah.gif" alt="Oprah" height="35"></p>
+          <table class="ticboard">
+              <tr>
+                  <td class="box" id="1"></td>
+                  <td class="box" id="2"></td>
+                  <td class="box" id="3"></td>
+              </tr>
+              <tr>
+                  <td class="box" id="4"></td>
+                  <td class="box" id="5"></td>
+                  <td class="box" id="6"></td>
+              </tr>
+              <tr>
+                  <td class="box" id="7"></td>
+                  <td class="box" id="8"></td>
+                  <td class="box" id="9"></td>
+              </tr>
+              <tr height="20"></tr>
+              <tr> <!--keeping the score-->
+                <td><div class="score-text">PLAYER X
+                </div></td>
+                <td><div class="score-text">TIES
+                </div></td>
+                <td><div class="score-text">PLAYER O
+                </div></td>
+              </tr>
+              <tr>
+                <td><div class="score-number" id="pX"></div>
+              </td>
+                <td><div class="score-number" id="ties"></div>
+                </td>
+                  <td><div class="score-number" id="pO"></div></td>
+              </tr>
+          </table>
+        </div> <!--container-->
 
-    		<div id="message" class="top-line">Start game message will go here</div>
-        <br>
-    		<table border="0">
-    			<tr>
-    				<td id="s1" class="Square" onclick="nextMove(this);"></td>
-    				<td id="s2" class="Square" onclick="nextMove(this);"></td>
-    				<td id="s3" class="Square" onclick="nextMove(this);"></td>
-    			</tr>
-    			<tr>
-    				<td id="s4" class="Square" onclick="nextMove(this);"></td>
-    				<td id="s5" class="Square" onclick="nextMove(this);"></td>
-    				<td id="s6" class="Square" onclick="nextMove(this);"></td>
-    			</tr>
-    			<tr>
-    				<td id="s7" class="Square" onclick="nextMove(this);"></td>
-    				<td id="s8" class="Square" onclick="nextMove(this);"></td>
-    				<td id="s9" class="Square" onclick="nextMove(this);"></td>
-    			</tr>
-    		</table>
-        <br>
+      <p>  <button class="btn"> Restart</button></p>
 
-        <div id="button">
-          <p class="btn"><a href="javascript:startGame();">Restart</a></p></div>
+   </div> <!--footer-->
+     <br> <br>
 
       <script src="http://localhost:8080/webpack-dev-server.js"></script>
       <script src="vendor.bundle.js" type="text/javascript" charset="utf-8"></script>
