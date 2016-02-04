@@ -9,45 +9,46 @@ require('./example');
 
 // load sass manifest
 require('../styles/index.scss');
+// let playerImg = [<img src="https://i.imgsafe.org/9d441eb.gif" height="50"/>,<img src="https://i.imgsafe.org/74d6152.gif" height="50"/>];
 let winner;
-let player = 'x';
+let player = 'X';
 let xWins = 0;
 let oWins = 0;
 let ties = 0;
 
-let clearBoard = function() {
-  $('.box').text('');
-};
 
-$('.restart-button').on('click', clearBoard());
+$("button").on('click', function() {
+  $('.box').text('');
+  $('.box').removeClass('disable');
+});
+
 
 let score = function() {
-  if (winner === 'x') {
+  if (winner === 'X') {
     xWins++;
-    $('#p1').append(xWins);
-  } else if (winner === 'o') {
+    $('#pX').text(xWins);
+  } else if (winner === 'O') {
     oWins++;
-    $('#p2').append(oWins);
-  } else {
+    $('#pO').text(oWins);
+  } else if (winner ==='tie'){
     ties++;
-    $('#ties').append(xWins);
+    $('#ties').text(ties);
   }
-
 };
 
-let $BoxId = function(num) {
+let $boxId = function(num) {
   return $('#' + num);
 };
 
 let checkWinCombo = function(a, b, c) {
-  if ($BoxId(a).text() === player && $BoxId(b).text() === player && $BoxId(c).text() === player) {
+  if ($boxId(a).text() === player && $boxId(b).text() === player && $boxId(c).text() === player) {
     return true;
   } else {
     return false;
   }
 };
 
-let checkWin = function(event) {
+let checkWin = function() {
   if(checkWinCombo(1, 2, 3) ||
     checkWinCombo(4, 5, 6) ||
     checkWinCombo(7, 8, 9) ||
@@ -58,31 +59,38 @@ let checkWin = function(event) {
     checkWinCombo(3, 5, 7)) {
       winner = player;
       $('.box').off("click");
-      $('.messages').text('Congrats! ' + player + ' wins!');
+      $('.messages').text('Congrats! Player ' + player + ' Wins!');
       score();
-    } else {
+    } else if ($('.box').text().length === 9 ){
+      winner = 'tie';
+      $('.messages').text('It\'s A Tie!');
+      score ();
+    } else{
       return false;
     }
+
 };
 
 let switchPlayer = function() {
-  if (player === 'x') {
-    player = 'o';
+  if (player === 'X') {
+    player = 'O';
   } else {
-    player = 'x';
+    player = 'X';
   }
 };
+
+
 
 let move = function() {
   $('.box').on('click', function() {
       if ($(this).text() !== '') {
         $('.messages').text('Select another box!');
-      } else if (player === 'x') {
-        $(this).text('x');
+      } else if (player === 'X') {
+        $(this).text('X');
         $(this).last().addClass('disable');
         console.log ('click');
       } else {
-        $(this).text('o');
+        $(this).text('O');
         $(this).last().addClass('disable');
       }
       checkWin();
