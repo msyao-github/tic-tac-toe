@@ -1,29 +1,30 @@
-
 $box-shadow:8px 5px 5px #888;
-$green-color:#66CDAA;
+$green-color:#66cdaa;
 
-.container{
+.container {
   margin: 0 auto;
-  position: center;
   padding: 1em;
+  position: center;
 }
 
 //new game
-.restart-button{
+h1 {
+  color: $green-color; //green
   font-family: "Pacifico", Times, serif;
   font-size: 36px;
-  text-align: center;
-  color: $green-color; //green
   letter-spacing: 3px;
+  text-align: center;
+
 }
 
-.messages{
-  text-align: center;
+.messages {
   font-size: 22px;
   font-family: "Rosario", sans-serif;
+  text-align: center;
+
 }
 
-.ticboard{
+.ticboard {
   margin: 0 auto;
   vertical-align: top;
 }
@@ -41,13 +42,51 @@ $green-color:#66CDAA;
 }
 
 
-tr, td{
+tr, td {
   text-align: center;
   font-family: "Rosario", sans-serif;
   font-size: 15px;
 }
-.score-number{
+
+.score-text {
+  font-weight:bold;
+}
+.score-number {
   font-family: "Rosario", sans-serif;
   font-size: 25px;
   color: $green-color; //green
+}
+
+p{
+  text-align: center;
+}
+button {
+  margin: 0 auto;
+  font-family: "Rosario", sans-serif;
+  font-size: 20px;
+}
+
+.btn {
+  background: #66cdaa;
+  background-image: -webkit-linear-gradient(top, #66cdaa, #66cdaa);
+  background-image: -moz-linear-gradient(top, #66cdaa, #66cdaa);
+  background-image: -ms-linear-gradient(top, #66cdaa, #66cdaa);
+  background-image: -o-linear-gradient(top, #66cdaa, #66cdaa);
+  background-image: linear-gradient(to bottom, #66cdaa, #66cdaa);
+  -webkit-border-radius: 25;
+  -moz-border-radius: 25;
+  border-radius: 25px;
+  color: #ffffff;
+  padding: 8px 15px 8px 15px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #3cfcb6;
+  background-image: -webkit-linear-gradient(top, #3cfcb6, #34d9b8);
+  background-image: -moz-linear-gradient(top, #3cfcb6, #34d9b8);
+  background-image: -ms-linear-gradient(top, #3cfcb6, #34d9b8);
+  background-image: -o-linear-gradient(top, #3cfcb6, #34d9b8);
+  background-image: linear-gradient(to bottom, #3cfcb6, #34d9b8);
+  text-decoration: none;
 }
