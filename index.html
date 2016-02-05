@@ -7,25 +7,103 @@
       <title>Tic Tac Toe Game</title>
     </head>
     <body>
-      <div class="container">
+      <!-- don't change data-toggle -->
+      <nav class="navbar navbar-light bg-faded">
+        <a class="navbar-brand" data-toggle="modal" data-target="#signup" href="#">Sign Up</a>
+        <a class="navbar-brand" data-toggle="modal" data-target="#signin" href="#">Sign In</a>
+        <a class="navbar-brand" data-toggle="modal" data-target="#changepassword" href="#">Change Password</a>
+        <a class="navbar-brand" data-toggle="modal" data-target="#" id="logout" href="#">Log Out</a>
+  </nav>
+  <!-- Sign Up Modal -->
+  <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
+        </div>
+        <div class="modal-body">
+
+          <form id="sign-up">
+            <input name="credentials[email]" type="text" placeholder="Email">
+            <input name="credentials[password]" type="password" placeholder="Password">
+            <input name="credentials[password_confirmation]" type="password" placeholder="Password">
+          </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" id="sign-up-button">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div> <!---end of 1 modal -->
+  <!-- Sign In Modal -->
+  <div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+        </div>
+        <div class="modal-body">
+          <form id="sign-in">
+            <input name="credentials[email]" type="text" placeholder="Email">
+            <input name="credentials[password]" type="password" placeholder="Password">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="sign-in-button">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div> <!---end of 1 modal -->
+  <!-- Change Password Modal -->
+  <div class="modal fade" id="changepassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+        </div>
+        <div class="modal-body">
+          <form id="change-password">
+          <input name="credentials[email]" type="text" placeholder="Email">
+          <input name="passwords[old]" type="password" placeholder="Old Password" value="">
+          <input name="passwords[new]" type="password" placeholder="New Password" value="">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="change-password-button">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div> <!---end of 1 modal -->
+
+
+        <div class="container">
+
+
               <h1>Go toe-to-toe in Tic-Tac-Toe!</h1>
-              <p class="messages"><br></p>
+            <br>  <p class="messages"></p><br>
 
           <table class="ticboard">
               <tr>
+                  <td class="box" id="0"></td>
                   <td class="box" id="1"></td>
                   <td class="box" id="2"></td>
-                  <td class="box" id="3"></td>
               </tr>
               <tr>
+                  <td class="box" id="3"></td>
                   <td class="box" id="4"></td>
                   <td class="box" id="5"></td>
-                  <td class="box" id="6"></td>
               </tr>
               <tr>
+                  <td class="box" id="6"></td>
                   <td class="box" id="7"></td>
                   <td class="box" id="8"></td>
-                  <td class="box" id="9"></td>
               </tr>
               <tr height="20"></tr>
               <tr> <!--keeping the score-->
@@ -45,11 +123,7 @@
               </tr>
           </table>
         </div> <!--container-->
-
-      <p>  <button class="btn"> Restart</button></p>
-
-   </div> <!--footer-->
-     <br> <br>
+      <p> <br><button class="btn"> Restart</button></p>
 
       <script src="http://localhost:8080/webpack-dev-server.js"></script>
       <script src="vendor.bundle.js" type="text/javascript" charset="utf-8"></script>
