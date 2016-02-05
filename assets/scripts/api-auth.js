@@ -24,24 +24,57 @@ $(document).ready(() => {
   });
 
 
-  let createGame = function() {
-      $.ajax({
-        url: myApp.baseUrl + '/games',
-        // url: 'http://httpbin.org/post',
-        headers: {
-          Authorization: 'Token token=' + myApp.user.token,
-        },
-        method: 'POST',
-        contentType: false,
-        processData: false,
-        data: new FormData(),
-      }).done(function(data) {
-        myApp.game = data.game;
-        console.log(data);
-      }).fail(function(jqxhr) {
-        console.error(jqxhr);
-      });
-  };
+
+
+// Create game state
+let createGame = function() {
+   $.ajax({
+     url: myApp.baseUrl + '/games',
+     // url: 'http://httpbin.org/post',
+     headers: {
+       Authorization: 'Token token=' + myApp.user.token,
+     },
+     method: 'POST',
+     contentType: false,
+     processData: false,
+     data: {}
+   }).done(function(data) {
+     myApp.game = data.game;
+     console.log(data);
+   }).fail(function(jqxhr) {
+     console.error(jqxhr);
+   });
+};
+
+// Save game state
+
+let saveGame = function (player, index) {
+console.log('attempting save game');
+ $.ajax({
+   url: myApp.baseUrl + '/games/' + myApp.game.id,
+   // url: 'http://httpbin.org/post',
+   method: 'PATCH',
+   headers: {
+     Authorization: 'Token token=' + myApp.user.token,
+   },
+   data: {
+ "game": {
+   "cell": {
+     "index": index,
+     "value": player,
+   },
+   "over": false
+ }
+}
+ }).done(function(data) {
+   myApp.game = data.game;
+   console.log(data);
+ }).fail(function(jqxhr) {
+   console.error(jqxhr);
+ });
+};
+
+
 
   $('#sign-in-button').on('click', function(e) {
     e.preventDefault();
@@ -60,6 +93,8 @@ $(document).ready(() => {
       console.error(jqxhr);
     });
   });
+
+
 
   $('#change-password-button').on('click', function(e) {
     e.preventDefault();
@@ -86,7 +121,6 @@ $(document).ready(() => {
 
   $('#logout').on('click', function(e) {
     e.preventDefault();
-    debugger;
     if (!myApp.user) {
       console.error('wrong');
     }
