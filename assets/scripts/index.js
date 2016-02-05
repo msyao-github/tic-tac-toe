@@ -2,10 +2,8 @@
 
 // user require with a reference to bundle the file and use it in this file
 // var example = require('./example');
-
 // use require without a reference to ensure a file is bundled
 require('./example');
-//^this is not defined!!! needs to be defined!
 //the api authentication
 require('./api-auth');
 // load sass manifest
@@ -17,21 +15,17 @@ let xWins = 0;
 let oWins = 0;
 let ties = 0;
 
-// $(this).empty().append('<img src="https://i.imgsafe.org/9d441eb.gif" height="100">');
-//
-// $(this).empty().append('<img src="https://i.imgsafe.org/74d6152.gif" height="100">');
-
-// $(this).html('<img src="https://i.imgsafe.org/74d6152.gif" height="100">');
-
-
-//Starts the game and clears message and gameboard
 let gameStatus = 'active';
+//clear game and message board
 $("button").on('click', function() {
   $('.messages').text('');
   $('.box').text('');
   gameStatus = 'active';
 });
 
+let switchPlayer = function(){
+    player = player === 'X' ? 'O' : 'X';
+};
 
 let move = function() {
   $('.box').on('click', function() {
@@ -46,7 +40,6 @@ let move = function() {
         }
         checkWin();
         switchPlayer();
-
     }
   });
 };
@@ -95,25 +88,17 @@ let checkWin = function() {
       winner = 'tie';
       $('.messages').text('It\'s A Tie!');
       score ();
+      gameStatus = 'inactive';
     } else{
       return false;
     }
 
 };
-
-let switchPlayer = function() {
-  if (player === 'X') {
-    player = 'O';
-  } else {
-    player = 'X';
-  }
-};
-
-
+//
 
 
 
 $(document).ready(() => {
-  console.log('It works.');
+  console.log('Woohoo!');
   move ();
 });
