@@ -5,6 +5,78 @@
 const myApp = {
   baseUrl: 'http://tic-tac-toe.wdibos.com',
 };
+// Create game state
+const createGame = function() {
+   $.ajax({
+     url: myApp.baseUrl + '/games',
+     headers: {
+       Authorization: 'Token token=' + myApp.user.token,
+     },
+     method: 'POST',
+     data: {}
+   }).done(function(data) {
+     console.log(data);
+     console.log('Game created');
+     myApp.game = data.game;
+   }).fail(function(jqxhr) {
+     console.error(jqxhr);
+     console.log('Sorry, game failed');
+
+   });
+};
+
+// get all games associated with a user
+const getGames = function() {
+  $.ajax({
+    url: myApp.baseUrl + '/games' + myApp.game.id,
+    type: 'GET',
+    headers: {
+      Authorization: 'Token token=' + myApp.user.token,
+    },
+    data: {}
+  }).done(function(data) {
+    myApp.game = data.game;
+    $('.games').html(data.games.length);
+    console.log(myApp.game);
+
+  }).fail(function(requestObject){
+    console.error(requestObject);
+  });
+};
+
+// updates the server of player moves
+const saveGame = function($boxId) {
+  let gameActive;
+  if (gameStatus === "inactive") {
+    gameActive = true;
+  } else {
+    gameActive = false;
+  }
+  console.log("trying to update server with move");
+  $.ajax({
+    url: myApp.baseUrl + '/games/' + myApp.game.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + myApp.user.token,
+    },
+    data: {
+      "game": {
+        "cell": {
+          "index": index,
+          "value": move(),
+        },
+        "over": gameActive
+      }
+    }
+  })
+  .done(function(data) {
+    console.log('turn submitted');
+    myApp.game = data.game;
+  }).fail(function(jqxhr) {
+    console.error(jqxhr);
+    console.log("update to server failed");
+  });
+};
 
 $(document).ready(() => {
   $('#sign-up-button').on('click', function(e) {
@@ -22,58 +94,6 @@ $(document).ready(() => {
       console.error(jqxhr);
     });
   });
-
-
-
-
-// Create game state
-let createGame = function() {
-   $.ajax({
-     url: myApp.baseUrl + '/games',
-     // url: 'http://httpbin.org/post',
-     headers: {
-       Authorization: 'Token token=' + myApp.user.token,
-     },
-     method: 'POST',
-     contentType: false,
-     processData: false,
-     data: {}
-   }).done(function(data) {
-     myApp.game = data.game;
-     console.log(data);
-   }).fail(function(jqxhr) {
-     console.error(jqxhr);
-   });
-};
-
-// Save game state
-
-let saveGame = function (player, index) {
-console.log('attempting save game');
- $.ajax({
-   url: myApp.baseUrl + '/games/' + myApp.game.id,
-   // url: 'http://httpbin.org/post',
-   method: 'PATCH',
-   headers: {
-     Authorization: 'Token token=' + myApp.user.token,
-   },
-   data: {
- "game": {
-   "cell": {
-     "index": index,
-     "value": player,
-   },
-   "over": false
- }
-}
- }).done(function(data) {
-   myApp.game = data.game;
-   console.log(data);
- }).fail(function(jqxhr) {
-   console.error(jqxhr);
- });
-};
-
 
 
   $('#sign-in-button').on('click', function(e) {
@@ -95,7 +115,6 @@ console.log('attempting save game');
   });
 
 
-
   $('#change-password-button').on('click', function(e) {
     e.preventDefault();
     if (!myApp.user) {
@@ -112,7 +131,6 @@ console.log('attempting save game');
       processData: false,
       data: formData,
     }).done(function(data) {
-
       console.log('successfully changed password');
     }).fail(function(jqxhr) {
       console.error(jqxhr);
