@@ -1,21 +1,43 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
-
-$box-shadow:8px 5px 5px #888;
 $green-color:#66cdaa;
+$black: #000;
 
+//Mixin's
+@mixin box-shadow($horizontal: 8px, $vertical: 5px, $blur: 5px, $color: #888) {
+  -webkit-box-shadow: $horizontal $vertical $blur $color;
+  -moz-box-shadow: $horizontal $vertical $blur $color;
+  box-shadow: $horizontal $vertical $blur $color;
+}
 
-.navbar {
-  text-align: center;
-  font-size: 28px;
-  font-family: "Rosario", sans-serif;
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin background-image($top:top,$start-color:#66cdaa, $end-color:#66cdaa) {
+  background-image: -webkit-linear-gradient($top, $start-color, $end-color);
+  background-image: -moz-linear-gradient($top, $start-color, $end-color);
+  background-image: linear-gradient($top, $start-color, $end-color);
+}
+
+@mixin background-image($top:top,$start-color:#3cfcb6, $end-color:#34d9b8) {
+  background-image: -webkit-linear-gradient($top, $start-color, $end-color);
+  background-image: -moz-linear-gradient($top, $start-color, $end-color);
+  background-image: linear-gradient($top, $start-color, $end-color);
 }
 
 .container {
   margin: 0 auto;
-  padding: 1em;
-  position: center;
 }
+
+.navbar-brand {
+  color: DarkGrey;
+  font-family: "Rosario", sans-serif;
+  font-size: 20px;
+}
+
 
 h1 {
   color: $green-color; //green
@@ -27,48 +49,51 @@ h1 {
 }
 
 .messages {
-  font-size: 22px;
   font-family: "Rosario", sans-serif;
+  font-size: 22px;
   text-align: center;
 
 }
 
 .ticboard {
   margin: 0 auto;
-  vertical-align: top;
+  padding: 0;
+  text-align: center;
 }
 
 .box {
-  height: 130px;
-  width: 130px;
-  font-color: black;
-  text-align: center;
+  @include box-shadow($horizontal: 8px, $vertical: 5px, $blur: 5px, $color: #888);
+  border: 2px solid $black;
+  font-color: $black;
   font-size: 34px;
-  border: 2px solid black;
-  box-shadow: $box-shadow;//grey
-  -webkit-box-shadow: $box-shadow;
-  -moz-box-shadow: $box-shadow;
+  height: 130px;
+  text-align: center;
+  width: 130px;
 }
 
 
 tr, td {
-  text-align: center;
   font-family: "Rosario", sans-serif;
   font-size: 15px;
+  text-align: center;
 }
 
 .score-text {
   font-weight:bold;
 }
+
 .score-number {
+  color: $green-color; //green
   font-family: "Rosario", sans-serif;
   font-size: 25px;
-  color: $green-color; //green
 }
 
-p{
+p {
   text-align: center;
 }
+
+//bottom button
+
 button {
   margin: 0 auto;
   font-family: "Rosario", sans-serif;
@@ -76,15 +101,9 @@ button {
 }
 
 .btn {
+  @include border-radius(25px);
+  @include background-image($top:top,$start-color:#66cdaa, $end-color:#66cdaa);
   background: #66cdaa;
-  background-image: -webkit-linear-gradient(top, #66cdaa, #66cdaa);
-  background-image: -moz-linear-gradient(top, #66cdaa, #66cdaa);
-  background-image: -ms-linear-gradient(top, #66cdaa, #66cdaa);
-  background-image: -o-linear-gradient(top, #66cdaa, #66cdaa);
-  background-image: linear-gradient(to bottom, #66cdaa, #66cdaa);
-  -webkit-border-radius: 25;
-  -moz-border-radius: 25;
-  border-radius: 25px;
   color: #ffffff;
   padding: 8px 15px 8px 15px;
   text-decoration: none;
@@ -92,10 +111,6 @@ button {
 
 .btn:hover {
   background: #3cfcb6;
-  background-image: -webkit-linear-gradient(top, #3cfcb6, #34d9b8);
-  background-image: -moz-linear-gradient(top, #3cfcb6, #34d9b8);
-  background-image: -ms-linear-gradient(top, #3cfcb6, #34d9b8);
-  background-image: -o-linear-gradient(top, #3cfcb6, #34d9b8);
-  background-image: linear-gradient(to bottom, #3cfcb6, #34d9b8);
+  @include background-image($top:top,$start-color:#3cfcb6, $end-color:#34d9b8);
   text-decoration: none;
 }
