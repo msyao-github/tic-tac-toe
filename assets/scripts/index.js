@@ -17,12 +17,39 @@ let xWins = 0;
 let oWins = 0;
 let ties = 0;
 
+// $(this).empty().append('<img src="https://i.imgsafe.org/9d441eb.gif" height="100">');
+//
+// $(this).empty().append('<img src="https://i.imgsafe.org/74d6152.gif" height="100">');
+
+// $(this).html('<img src="https://i.imgsafe.org/74d6152.gif" height="100">');
+
+
+//Starts the game and clears message and gameboard
 let gameStatus = 'active';
 $("button").on('click', function() {
+  $('.messages').text('');
   $('.box').text('');
   gameStatus = 'active';
 });
 
+
+let move = function() {
+  $('.box').on('click', function() {
+      if (gameStatus ==='active'){
+        if ($(this).text() !== '') {
+          $('.messages').text('Click Another Box!');
+        } else if (player === 'X') {
+          $(this).text('X');
+          console.log ('click');
+        } else {
+          $(this).text('O');
+        }
+        checkWin();
+        switchPlayer();
+
+    }
+  });
+};
 
 let score = function() {
   if (winner === 'X') {
@@ -37,6 +64,8 @@ let score = function() {
   }
 };
 
+//checks Box ID in html to match with the winning combination of cells
+//in checkWinCombo function
 let $boxId = function(num) {
   return $('#' + num);
 };
@@ -50,14 +79,14 @@ let checkWinCombo = function(a, b, c) {
 };
 
 let checkWin = function() {
-  if(checkWinCombo(1, 2, 3) ||
-    checkWinCombo(4, 5, 6) ||
-    checkWinCombo(7, 8, 9) ||
+  if(checkWinCombo(0, 1, 2) ||
+    checkWinCombo(3, 4, 5) ||
+    checkWinCombo(6, 7, 8) ||
+    checkWinCombo(0, 3, 6) ||
     checkWinCombo(1, 4, 7) ||
     checkWinCombo(2, 5, 8) ||
-    checkWinCombo(3, 6, 9) ||
-    checkWinCombo(1, 5, 9) ||
-    checkWinCombo(3, 5, 7)) {
+    checkWinCombo(0, 4, 8) ||
+    checkWinCombo(2, 4, 6)) {
       winner = player;
       gameStatus = 'inactive';
       $('.messages').text('Congrats! Player ' + player + ' Wins!');
@@ -81,24 +110,8 @@ let switchPlayer = function() {
 };
 
 
-let move = function() {
-  $('.box').on('click', function() {
-      if (gameStatus ==='active'){
-        if ($(this).text() !== '') {
-          $('.messages').text('Go To Another Box!');
-        } else if (player === 'X') {
-          $(this).text('X');
-          // $(this).last().addClass('disable');
-          console.log ('click');
-        } else {
-          $(this).text('O');
-          // $(this).last().addClass('disable');
-        }
-        checkWin();
-        switchPlayer();
-    }
-  });
-};
+
+
 
 $(document).ready(() => {
   console.log('It works.');
