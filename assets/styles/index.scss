@@ -1,5 +1,15 @@
+$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
 $box-shadow:8px 5px 5px #888;
 $green-color:#66cdaa;
+
+
+.navbar {
+  text-align: center;
+  font-size: 28px;
+  font-family: "Rosario", sans-serif;
+}
 
 .container {
   margin: 0 auto;
@@ -7,7 +17,6 @@ $green-color:#66cdaa;
   position: center;
 }
 
-//new game
 h1 {
   color: $green-color; //green
   font-family: "Pacifico", Times, serif;
