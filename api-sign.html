@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Example</title>
+    </head>
+    <body>
+      <form id="sign-up" name="sign-up">
+          <p>Sign Up!</p>
+          <label>E-mail <input name="credentials[email]" type=
+          "text" value=""></label>
+          <label>Password <input name=
+          "credentials[password]" type="password" value=""></label>
+          <input name=
+          "submit" type="submit" value="Sign Up">
+      </form><!--sign up-->
+      <form id="sign-in" name="sign-in">
+          <p>Sign In!</p><label>E-mail <input name="credentials[email]" type=
+          "text" value=""></label> <label>Password <input name=
+          "credentials[password]" type="password" value=""></label> <input name=
+          "submit" type="submit" value="Sign In">
+      </form><!--sign in-->
+      <form id="change-password" name="change-password">
+          <p>Change password!</p><label>Old Password
+      <input name="password[old]"
+          type="password" value=""></label> <label>New Password <input name=
+          "password[new]" type="password" value=""></label> <input name="submit"
+          type="submit" value="Change password">
+      </form><!--change password-->
+
+      <script src="http://localhost:8080/webpack-dev-server.js"></script>
+      <script src="vendor.bundle.js" type="text/javascript" charset="utf-8"></script>
+      <script src="bundle.js" type="text/javascript" charset="utf-8"></script>
+    </body>
+</html>
