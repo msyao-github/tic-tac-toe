@@ -19,7 +19,7 @@ Winner and Tie at the end of the game will be declared in a message below the ti
 The Tic Tac Toe site can be viewed [here](http://msyao-ga.github.io/tic-tac-toe/).
 
 
-## Unsolved Problems / Future to dos
+## Unsolved Problems / To be solved
 
 ⋅⋅* To fix errors in AJAX code.
 ⋅⋅* The *change password* and *log out* buttons should show when the user has signed in and hide before the user has signed in and when the user has logged out.
