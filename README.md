@@ -14,16 +14,17 @@ Aside from drawing the wireframe, I wrote down the steps of completing a game so
 
 Without signing up, the user can start the game by clicking the cells. It's a 2-player game, so the user can play for *X* and or *O*. The game follows  3-in-a-row/column/diagonal winning logic. The game starts with player X and the game begins.
 
-Winner and Tie at the end of the game will be declared in a message below the title. Message will also be called if the user has clicked on an already occupied game cell. On the bottom, the scoreboard will keep the scores even when user clicks *Restart*, the scores will disappear if the user hit refresh on their browser. However, with the implementation of the AJAX/API requests, the user who have signed up and signed into the game, the user's game is then saved with the moves and the results in an array.
+Winner and Tie at the end of the game will be declared in a message below the title. Message will also be called if the user has clicked on an already occupied game cell. On the bottom, the scoreboard will keep the scores even when user clicks *Restart*, the scores will disappear if the user hit refresh on their browser. However, with AJAX/API requests, the game moves and results of a user, who have signed up and signed into the game, should be tracked stored on the server.
+
+The Tic Tac Toe site can be viewed [here](http://msyao-ga.github.io/tic-tac-toe/).
 
 
 ## Unsolved Problems / Future to dos
 
-Code errors
-⋅⋅* To fix errors in AJAX code
+⋅⋅* To fix errors in AJAX code.
 ⋅⋅* The *change password* and *log out* buttons should show when the user has signed in and hide before the user has signed in and when the user has logged out.
 ⋅⋅* To adjust the CSS when the message alert pushes down the game board when it first displays.
-⋅⋅* To fix conflicting code issues that affects UX
+⋅⋅* To fix code conflicts in different files.
 
 
 ## [License](LICENSE)
