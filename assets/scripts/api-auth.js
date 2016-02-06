@@ -6,78 +6,72 @@ const myApp = {
   baseUrl: 'http://tic-tac-toe.wdibos.com',
 };
 // Create game state
-const createGame = function() {
+let createGame = function() {
    $.ajax({
      url: myApp.baseUrl + '/games',
      headers: {
        Authorization: 'Token token=' + myApp.user.token,
      },
      method: 'POST',
+     contentType: false,
+     processData: false,
      data: {}
    }).done(function(data) {
      console.log(data);
      console.log('Game created');
      myApp.game = data.game;
-   }).fail(function(jqxhr) {
+   })
+    .fail(function(jqxhr) {
      console.error(jqxhr);
      console.log('Sorry, game failed');
-
    });
 };
-
-// get all games associated with a user
-const getGames = function() {
+//count games
+let countGames = function() {
   $.ajax({
-    url: myApp.baseUrl + '/games' + myApp.game.id,
+    url: myApp.baseUrl + '/games',
     type: 'GET',
     headers: {
       Authorization: 'Token token=' + myApp.user.token,
     },
-    data: {}
+    // data: {}
   }).done(function(data) {
-    myApp.game = data.game;
-    $('.games').html(data.games.length);
-    console.log(myApp.game);
-
-  }).fail(function(requestObject){
-    console.error(requestObject);
+    $('#countGames').html(data.games.length);
+    console.log(data.games.length);
+  })
+    .fail(function(jqxhr){
+    console.error(jqxhr);
   });
 };
-
-// updates the server of player moves
-const saveGame = function($boxId) {
-  let gameActive;
-  if (gameStatus === "inactive") {
-    gameActive = true;
-  } else {
-    gameActive = false;
-  }
-  console.log("trying to update server with move");
+//update game moves
+let updateGame = function(player, index) {
   $.ajax({
-    url: myApp.baseUrl + '/games/' + myApp.game.id,
-    method: 'PATCH',
-    headers: {
-      Authorization: 'Token token=' + myApp.user.token,
-    },
-    data: {
-      "game": {
-        "cell": {
-          "index": index,
-          "value": move(),
-        },
-        "over": gameActive
-      }
+      url: myApp.baseUrl + '/games/' + myApp.game.id,
+      method: 'PATCH',
+      headers: {
+        Authorization: 'Token token=' + myApp.user.token,
+      },
+      data: {
+        "game": {
+          "cell": {
+            "index": index,
+            "value": player
+          },
+          "over": false
+        }
     }
   })
-  .done(function(data) {
-    console.log('turn submitted');
+  .done(function(data){
     myApp.game = data.game;
+    console.log(data);
   }).fail(function(jqxhr) {
     console.error(jqxhr);
-    console.log("update to server failed");
   });
 };
 
+
+
+//sign up sign in change pw log out
 $(document).ready(() => {
   $('#sign-up-button').on('click', function(e) {
     e.preventDefault();
@@ -156,6 +150,4 @@ $(document).ready(() => {
   });
 
 });
-
-
 module.exports = true;
