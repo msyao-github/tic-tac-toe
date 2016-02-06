@@ -5,7 +5,7 @@
 // use require without a reference to ensure a file is bundled
 require('./example');
 //the api authentication
-require('./api-auth');
+const ajax = require('./api-auth');
 // load sass manifest
 require('../styles/index.scss');
 let winner;
@@ -20,8 +20,8 @@ $("button").on('click', function() {
   $('.messages').text('');
   $('.box').text('');
   gameStatus = 'active';
-  createGame();
-  // countGames():
+  ajax.createGame();
+  ajax.countGames();
 });
 
 let switchPlayer = function(){
@@ -35,10 +35,11 @@ let move = function() {
           $('.messages').text('Click Another Box!');
         } else if (player === 'X') {
           $(this).text('X');
-          console.log ('x');
+          // ajax.updateGame();
+          console.log ('clicks');
         } else {
           $(this).text('O');
-          console.log ('o');
+          // ajax.updateGame();
         }
         checkWin();
         switchPlayer();
