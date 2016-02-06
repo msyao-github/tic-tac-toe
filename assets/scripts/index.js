@@ -5,26 +5,23 @@
 // use require without a reference to ensure a file is bundled
 require('./example');
 //the api authentication
-
-const ajax = require('./api-auth');
+require('./api-auth');
 // load sass manifest
 require('../styles/index.scss');
-
 let winner;
 let player = 'X';
 let xWins = 0;
 let oWins = 0;
 let ties = 0;
 
+//Starts the game and clears message and gameboard
 let gameStatus = 'active';
-//clear game and message board
 $("button").on('click', function() {
   $('.messages').text('');
   $('.box').text('');
   gameStatus = 'active';
   createGame();
-  getGames();
-
+  // countGames():
 });
 
 let switchPlayer = function(){
@@ -38,9 +35,10 @@ let move = function() {
           $('.messages').text('Click Another Box!');
         } else if (player === 'X') {
           $(this).text('X');
-          console.log ('click');
+          console.log ('x');
         } else {
           $(this).text('O');
+          console.log ('o');
         }
         checkWin();
         switchPlayer();
@@ -76,6 +74,7 @@ let checkWinCombo = function(a, b, c) {
   }
 };
 
+
 let checkWin = function() {
   if(checkWinCombo(0, 1, 2) ||
     checkWinCombo(3, 4, 5) ||
@@ -93,17 +92,17 @@ let checkWin = function() {
       winner = 'tie';
       $('.messages').text('It\'s A Tie!');
       score ();
-      gameStatus = 'inactive';
     } else{
       return false;
     }
 
 };
-//
+
+
 
 
 
 $(document).ready(() => {
-  console.log('Woohoo!');
+  console.log('It works.');
   move ();
 });
