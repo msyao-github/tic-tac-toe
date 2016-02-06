@@ -8,22 +8,22 @@ To get the project started, I sketched a wireframe of some features of the *tic 
 
 See here [`assets/images/wireframe.JPG`](wireframe).
 
-Aside from drawing the wireframe, I wrote down the game logic so after structuring the game in HTML/CSS, I can follow that to code in Javascript, which was the coding language I had the hardest time creating.
+Aside from drawing the wireframe, I wrote down the steps of completing a game so after structuring the game in HTML/CSS, I can follow that to code in Javascript, which I had the hardest time creating from scratch.
 
 ## User Story
 
-Without signing up, the user can start the game by clicking the cells. It's a 2-player game, so the user can play for *X* and or *O*. The game follows 3 in a row/column/diagonal winning logic. Winner and Tie at the end of the game will be declared in a message below the title. Message will also be called if the user has clicked on an already occupied game cell. On the bottom, the scoreboard will track the scores unless the user hit refresh on their browser. If the user signs up and signs into the game, the game is suppose to log the moves and the results with AJAX JSON requests.
+Without signing up, the user can start the game by clicking the cells. It's a 2-player game, so the user can play for *X* and or *O*. The game follows  3-in-a-row/column/diagonal winning logic. The game starts with player X and the game begins.
+
+Winner and Tie at the end of the game will be declared in a message below the title. Message will also be called if the user has clicked on an already occupied game cell. On the bottom, the scoreboard will keep the scores even when user clicks *Restart*, the scores will disappear if the user hit refresh on their browser. However, with the implementation of the AJAX/API requests, the user who have signed up and signed into the game, the user's game is then saved with the moves and the results in an array.
 
 
-## Unsolved Problems
+## Unsolved Problems / Future to dos
 
-API/AJAX
-- Some requests not fulfilled and led to errors.
-- The *change password* and *log out* should be hidden until the user has signed in.
-
-HTML/CSS/JS
-- The message alert pushes down the game board when it first displays.
-- With the my code, I was not able to figure out how to use (append, replace? jQuery) images instead of letters "X" and "O". But that's an extraneous thing I plan to figure out.
+Code errors
+⋅⋅* To fix errors in AJAX code
+⋅⋅* The *change password* and *log out* buttons should show when the user has signed in and hide before the user has signed in and when the user has logged out.
+⋅⋅* To adjust the CSS when the message alert pushes down the game board when it first displays.
+⋅⋅* To fix conflicting code issues that affects UX
 
 
 ## [License](LICENSE)
