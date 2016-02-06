@@ -99,9 +99,6 @@ let checkWin = function() {
 };
 
 
-
-
-
 $(document).ready(() => {
   console.log('It works.');
   move ();
