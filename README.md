@@ -16,7 +16,7 @@ Without signing up, the user can start the game by clicking the cells. It's a 2-
 
 Winner and Tie at the end of the game will be declared in a message below the title. Message will also be called if the user has clicked on an already occupied game cell. On the bottom, the scoreboard will keep the scores even when user clicks *Restart*, the scores will disappear if the user hit refresh on their browser. However, with AJAX/API requests, the game moves and results of a user, who have signed up and signed into the game, should be tracked stored on the server.
 
-The Tic Tac Toe site can be viewed [here](http://msyao-ga.github.io/tic-tac-toe/).
+The Tic Tac Toe site can be viewed [here](http://msyao-github.github.io/tic-tac-toe/).
 
 
 ## Unsolved Problems / To be solved
