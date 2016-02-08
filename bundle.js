@@ -36,6 +36,7 @@ webpackJsonp([0],[
 	var xWins = 0;
 	var oWins = 0;
 	var ties = 0;
+	var games = 0;
 
 	//Starts the game and clears message and gameboard
 	var gameStatus = 'active';
@@ -78,7 +79,8 @@ webpackJsonp([0],[
 	  } else if (winner === 'tie') {
 	    ties++;
 	    $('#ties').text(ties);
-	  }
+	  }games++;
+	  $('.getGames').text(games);
 	};
 
 	//checks Box ID in html to match with the winning combination of cells
