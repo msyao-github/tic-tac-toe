@@ -13,6 +13,7 @@ let player = 'X';
 let xWins = 0;
 let oWins = 0;
 let ties = 0;
+let games = 0;
 
 //Starts the game and clears message and gameboard
 let gameStatus = 'active';
@@ -56,7 +57,8 @@ let score = function() {
   } else if (winner ==='tie'){
     ties++;
     $('#ties').text(ties);
-  }
+  } games++;
+    $('.getGames').text(games);
 };
 
 //checks Box ID in html to match with the winning combination of cells
