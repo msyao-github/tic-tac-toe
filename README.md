@@ -6,7 +6,7 @@ We all know how to play *tic tac toe*. Playing the game is quick and easy, the g
 
 To get the project started, I sketched a wireframe of some features of the *tic tac toe* web app that ended up being in the end product.
 
-See here [`assets/images/wireframe.JPG`](wireframe).
+See here [`/assets/images/wireframe.JPG`](wireframe).
 
 Aside from drawing the wireframe, I wrote down the steps of completing a game so after structuring the game in HTML/CSS, I can follow that to code in Javascript, which I had the hardest time creating from scratch.
 
@@ -21,10 +21,10 @@ The Tic Tac Toe site can be viewed [here](http://msyao-github.github.io/tic-tac-
 
 ## Unsolved Problems / To be solved
 
-⋅⋅* To fix errors in AJAX code.
-⋅⋅* The *change password* and *log out* buttons should show when the user has signed in and hide before the user has signed in and when the user has logged out.
-⋅⋅* To adjust the CSS when the message alert pushes down the game board when it first displays.
-⋅⋅* To fix code conflicts in different files.
+* To fix errors in AJAX code.
+* The *change password* and *log out* buttons should show when the user has signed in and hide before the user has signed in and when the user has logged out.
+* To adjust the CSS when the message alert pushes down the game board when it first displays.
+* To fix code conflicts in different files.
 
 
 ## [License](LICENSE)
