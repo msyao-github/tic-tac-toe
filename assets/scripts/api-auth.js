@@ -5,70 +5,71 @@
 const myApp = {
   baseUrl: 'http://tic-tac-toe.wdibos.com',
 };
-// Create game state
+
+// creates a new game when player signs in
 let createGame = function() {
-   $.ajax({
-     url: myApp.baseUrl + '/games',
-     headers: {
-       Authorization: 'Token token=' + myApp.user.token,
-     },
-     method: 'POST',
-     contentType: false,
-     processData: false,
-     data: {}
-   }).done(function(data) {
-     console.log(data);
-     console.log('Game created');
-     myApp.game = data.game;
-   })
-    .fail(function(jqxhr) {
-     console.error(jqxhr);
-     console.log('Sorry, game failed');
-   });
-};
-//count games
-let countGames = function() {
   $.ajax({
     url: myApp.baseUrl + '/games',
-    type: 'GET',
+    type: 'POST',
     headers: {
       Authorization: 'Token token=' + myApp.user.token,
     },
-    // data: {}
+    data: {}
   }).done(function(data) {
-    $('#countGames').html(data.games.length);
-    console.log(data.games.length);
-  })
-    .fail(function(jqxhr){
-    console.error(jqxhr);
-  });
-};
-//update game moves
-let updateGame = function(player, index) {
-  $.ajax({
-      url: myApp.baseUrl + '/games/' + myApp.game.id,
-      method: 'PATCH',
-      headers: {
-        Authorization: 'Token token=' + myApp.user.token,
-      },
-      data: {
-        "game": {
-          "cell": {
-            "index": index,
-            "value": player
-          },
-          "over": false
-        }
-    }
-  })
-  .done(function(data){
     myApp.game = data.game;
+    console.log('Game created - createGame AJAX');
     console.log(data);
   }).fail(function(jqxhr) {
     console.error(jqxhr);
   });
 };
 
+let gameData = {
+};
+
+// get all games associated with a user
+
+let getGames = function() {
+  $.ajax({
+    url: myApp.baseUrl +'/games',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + myApp.user.token,
+    }
+  }).done(function(responseBody) {
+    gameData = responseBody;
+    console.log(responseBody);
+    $('.getGames').text(gameData.games.length);
+  }).fail(function(requestObject) {
+    console.error(requestObject);
+  });
+};
+
+// updates the moves of each player
+let updateGame = function() {
+  console.log('It\'s saving');
+  $.ajax({
+    url: myApp.baseUrl + '/games/' + myApp.game.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + myApp.user.token,
+    },
+    data: {
+  "game": {
+    "cell": {
+      "index": 0,
+      "value": "x",
+    },
+    "over": false
+  }
+}
+  }).done(function(data) {
+    myApp.game = data.game;
+    console.log(data);
+  }).fail(function(jqxhr) {
+    console.error(jqxhr);
+  });
+};
 
 
 //sign up sign in change pw log out
@@ -101,7 +102,8 @@ $(document).ready(() => {
       data: formData,
     }).done(function(data) {
       myApp.user = data.user;
-      createGame ();
+      createGame();
+      getGames();
       console.log(data);
     }).fail(function(jqxhr) {
       console.error(jqxhr);

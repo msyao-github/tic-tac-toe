@@ -102,23 +102,29 @@
                   <td class="box" id="7"></td>
                   <td class="box" id="8"></td>
               </tr>
-              <tr height="20"></tr>
-              <tr> <!--keeping the score-->
-                <td><div class="score-text">PLAYER X
-                </div></td>
-                <td><div class="score-text">TIES
-                </div></td>
-                <td><div class="score-text">PLAYER O
-                </div></td>
+              <tr height="20"></tr><table>
+              <table class="ticboard"> <!--score -->
+              <tr class="score-bottom"> <!--keeping the score-->
+                <td class="score-text">PLAYER X
+                </td>
+                <td class="score-text">TIES
+                </td>
+                <td class="score-text">PLAYER O
+                </td>
+                <td class="score-text">GAMES
+                </td>
               </tr>
               <tr>
                 <td><div class="score-number" id="pX"></div>
               </td>
                 <td><div class="score-number" id="ties"></div>
                 </td>
-                  <td><div class="score-number" id="pO"></div></td>
+                <td><div class="score-number" id="pO"></div>
+                </td>
+                <td><div class="score-number getGames"></div>
+                </td>
               </tr>
-              <tr id="#countGames"></tr>
+              <!--for API AJAX count how many games played -->
           </table>
 
         </div> <!--container-->
