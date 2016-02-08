@@ -6,7 +6,9 @@ We all know how to play *tic tac toe*. Playing the game is quick and easy, the g
 
 To get the project started, I sketched a wireframe of some features of the *tic tac toe* web app that ended up being in the end product.
 
-See here [`/assets/images/wireframe.JPG`](wireframe).
+See here:
+
+![Wireframe](https://github.com/msyao-github/tic-tac-toe/blob/master/assets/images/wireframe.JPG)
 
 Aside from drawing the wireframe, I wrote down the steps of completing a game so after structuring the game in HTML/CSS, I can follow that to code in Javascript, which I had the hardest time creating from scratch.
 
