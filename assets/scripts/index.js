@@ -5,7 +5,7 @@
 // use require without a reference to ensure a file is bundled
 require('./example');
 //the api authentication
-const ajax = require('./api-auth');
+require('./api-auth');
 // load sass manifest
 require('../styles/index.scss');
 let winner;
@@ -20,8 +20,6 @@ $("button").on('click', function() {
   $('.messages').text('');
   $('.box').text('');
   gameStatus = 'active';
-  ajax.createGame();
-  ajax.countGames();
 });
 
 let switchPlayer = function(){
@@ -33,14 +31,14 @@ let move = function() {
       if (gameStatus ==='active'){
         if ($(this).text() !== '') {
           $('.messages').text('Click Another Box!');
+          switchPlayer();//put this here, otherwise the move will repeat turn for last player
         } else if (player === 'X') {
           $(this).text('X');
-          // ajax.updateGame();
-          console.log ('clicks');
         } else {
           $(this).text('O');
-          // ajax.updateGame();
         }
+        // createGame();
+        // getGames();
         checkWin();
         switchPlayer();
     }
@@ -88,10 +86,12 @@ let checkWin = function() {
       winner = player;
       gameStatus = 'inactive';
       $('.messages').text('Congrats! Player ' + player + ' Wins!');
+      console.log ('Winning Game');
       score();
     } else if ($('.box').text().length === 9 ){
       winner = 'tie';
       $('.messages').text('It\'s A Tie!');
+      console.log ('Tied Game');
       score ();
     } else{
       return false;
