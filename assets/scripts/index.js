@@ -5,9 +5,13 @@
 // use require without a reference to ensure a file is bundled
 require('./example');
 //the api authentication
-require('./api-auth');
+const apiAuth = require('./api-auth');
 // load sass manifest
 require('../styles/index.scss');
+const myApp = {
+  baseUrl: 'http://tic-tac-toe.wdibos.com',
+};
+
 let winner;
 let player = 'X';
 let xWins = 0;
@@ -27,21 +31,23 @@ let switchPlayer = function(){
     player = player === 'X' ? 'O' : 'X';
 };
 
+
 let move = function() {
   $('.box').on('click', function() {
-      if (gameStatus ==='active'){
-        if ($(this).text() !== '') {
-          $('.messages').text('Click Another Box!');
-          switchPlayer();//put this here, otherwise the move will repeat turn for last player
-        } else if (player === 'X') {
-          $(this).text('X');
-        } else {
-          $(this).text('O');
-        }
-        // createGame();
-        // getGames();
-        checkWin();
-        switchPlayer();
+    if (gameStatus ==='active'){
+      if ($(this).text() !== '') {
+        $('.messages').text('Click Another Box!');
+        switchPlayer();//put this here, otherwise the move will repeat turn for last player
+      } else if (player === 'X') {
+        $(this).text('X');
+        // apiAuth.updateGame(,'X');
+      } else {
+        $(this).text('O');
+        // apiAuth.updateGame(,'O');
+      }
+      checkWin();
+      apiAuth.updateGame(player, event.target.id);
+      switchPlayer();
     }
   });
 };
