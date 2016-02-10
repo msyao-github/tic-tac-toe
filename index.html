@@ -12,8 +12,8 @@
 
       <!-- don't change data-toggle -->
       <nav class="navbar navbar-light bg-faded">
-        <a class="navbar-brand" data-toggle="modal" data-target="#signup" href="#">Sign Up</a>
-        <a class="navbar-brand" data-toggle="modal" data-target="#signin" href="#">Sign In</a>
+        <a class="navbar-brand" id="signing-up" data-toggle="modal" data-target="#signup" href="#">Sign Up</a>
+        <a class="navbar-brand" id="signing-in" data-toggle="modal" data-target="#signin" href="#">Sign In</a>
         <a class="navbar-brand" id="changepw" data-toggle="modal" data-target="#changepassword" href="#">Change Password</a>
         <a class="navbar-brand" id="logout-nav" data-toggle="modal" data-target="#" id="logout" href="#">Log Out</a>
       </nav>
@@ -87,6 +87,10 @@
           <h1>Go toe-to-toe in Tic-Tac-Toe!</h1>
             <br>
             <p class="messages"></p><br>
+            <p class="signin-msg"> Please Sign Up Or Sign In to Play!</p><br>
+            <p class="signin-gif"><img src="http://www.keithbittner.com/ttt/images/index-graphic.gif" alt="tic-tac-toe" width="300">
+            </p>
+
           <table class="ticboard">
               <tr>
                   <td class="box" id="0"></td>
@@ -130,7 +134,7 @@
 
         </div> <!--container-->
 
-      <p> <br><button class="btn"> Restart</button></p>
+      <p> <br><button class="btn restart"> Restart</button></p>
 
       <script src="http://localhost:8080/webpack-dev-server.js"></script>
       <script src="vendor.bundle.js" type="text/javascript" charset="utf-8"></script>

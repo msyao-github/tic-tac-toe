@@ -7,6 +7,7 @@ const myApp = {
 };
 
 // creates a new game when player signs in
+//calculate game in another module - if winner who it was
 let createGame = function() {
   $.ajax({
     url: myApp.baseUrl + '/games',
@@ -46,8 +47,8 @@ let getGames = function() {
 };
 
 // updates the moves of each player
-let updateGame = function() {
-  console.log('It\'s saving');
+let updateGame = function(player,index) {
+  console.log('It\'s updating');
   $.ajax({
     url: myApp.baseUrl + '/games/' + myApp.game.id,
     method: 'PATCH',
@@ -55,16 +56,16 @@ let updateGame = function() {
       Authorization: 'Token token=' + myApp.user.token,
     },
     data: {
-  "game": {
-    "cell": {
-      "index": 0,
-      "value": "x",
-    },
-    "over": false
-  }
-}
+      "game": {
+        "cell": {
+          "index": index, //what box have been clicked
+          "value": player,//what player it is
+        },
+        "over": false
+      }
+    }
   }).done(function(data) {
-    myApp.game = data.game;
+    // myApp.game = data.game;
     console.log(data);
   }).fail(function(jqxhr) {
     console.error(jqxhr);
@@ -74,6 +75,10 @@ let updateGame = function() {
 
 //sign up sign in change pw log out
 $(document).ready(() => {
+  $('.ticboard').hide();
+  $('.restart').hide();
+  $('#changepw').hide();
+  $('#logout-nav').hide();
   $('#sign-up-button').on('click', function(e) {
     e.preventDefault();
     var formData = new FormData($("#sign-up")[0]);
@@ -102,8 +107,17 @@ $(document).ready(() => {
       data: formData,
     }).done(function(data) {
       myApp.user = data.user;
+      // getGames();
+      $('.ticboard').show();
+      $('.btn').show();
+      $('#signing-up').hide();
+      $('#signing-in').hide();
+      $('.signin-msg').hide();
+      $('.signin-gif').hide();
+      $('#changepw').show();
+      $('#logout-nav').show();
       createGame();
-      getGames();
+      $('.score-number').empty();
       console.log(data);
     }).fail(function(jqxhr) {
       console.error(jqxhr);
@@ -146,10 +160,16 @@ $(document).ready(() => {
       },
     }).done(function(data) {
       console.log(data);
+      $('.messages').text('');
+      $('.box').text('');
     }).fail(function(jqxhr) {
       console.error(jqxhr);
     });
   });
 
 });
-module.exports = true;
+module.exports = {
+  createGame,
+  getGames,
+  updateGame
+};

@@ -14,7 +14,7 @@ Aside from drawing the wireframe, I wrote down the steps of completing a game so
 
 ## User Story
 
-Without signing up, the user can start the game by clicking the cells. It's a 2-player game, so the user can play for *X* and or *O*. The game follows  3-in-a-row/column/diagonal winning logic. The game starts with player X and the game begins.
+The user have to sign up and log in to play the game. It's a 2-player game, so the user can play for *X* and or *O*. The game follows  3-in-a-row/column/diagonal winning logic. The game starts with player X and the game begins.
 
 Winner and Tie at the end of the game will be declared in a message below the title. Message will also be called if the user has clicked on an already occupied game cell. On the bottom, the scoreboard will keep the scores even when user clicks *Restart*, the scores will disappear if the user hit refresh on their browser. However, with AJAX/API requests, the game moves and results of a user, who have signed up and signed into the game, should be tracked stored on the server.
 
