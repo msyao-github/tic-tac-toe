@@ -85,7 +85,7 @@ webpackJsonp([0],[
 	    ties++;
 	    $('#ties').text(ties);
 	  }games++;
-	  $('.getGames').text(games);
+	  // $('.getGames').text(games);
 	};
 
 	//checks Box ID in html to match with the winning combination of cells
@@ -109,11 +109,15 @@ webpackJsonp([0],[
 	    $('.messages').text('Congrats! Player ' + player + ' Wins!');
 	    console.log('Winning Game');
 	    score();
+	    apiAuth.createGame();
+	    apiAuth.getGames();
 	  } else if ($('.box').text().length === 9) {
 	    winner = 'tie';
 	    $('.messages').text('It\'s A Tie!');
 	    console.log('Tied Game');
 	    score();
+	    apiAuth.createGame();
+	    apiAuth.getGames();
 	  } else {
 	    return false;
 	  }
@@ -248,6 +252,7 @@ webpackJsonp([0],[
 	      $('#changepw').show();
 	      $('#logout-nav').show();
 	      createGame();
+	      getGames();
 	      $('.score-number').empty();
 	      console.log(data);
 	    }).fail(function (jqxhr) {
