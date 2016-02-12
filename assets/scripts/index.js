@@ -64,7 +64,7 @@ let score = function() {
     ties++;
     $('#ties').text(ties);
   } games++;
-    $('.getGames').text(games);
+    // $('.getGames').text(games);
 };
 
 //checks Box ID in html to match with the winning combination of cells
@@ -96,14 +96,19 @@ let checkWin = function() {
       $('.messages').text('Congrats! Player ' + player + ' Wins!');
       console.log ('Winning Game');
       score();
+      apiAuth.createGame();
+      apiAuth.getGames();
     } else if ($('.box').text().length === 9 ){
       winner = 'tie';
       $('.messages').text('It\'s A Tie!');
       console.log ('Tied Game');
       score ();
+      apiAuth.createGame();
+      apiAuth.getGames();
     } else{
       return false;
     }
+
 
 };
 
