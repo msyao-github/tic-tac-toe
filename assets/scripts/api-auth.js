@@ -117,6 +117,7 @@ $(document).ready(() => {
       $('#changepw').show();
       $('#logout-nav').show();
       createGame();
+      getGames();
       $('.score-number').empty();
       console.log(data);
     }).fail(function(jqxhr) {
