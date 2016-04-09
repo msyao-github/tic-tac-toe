@@ -8,9 +8,7 @@ require('./example');
 const apiAuth = require('./api-auth');
 // load sass manifest
 require('../styles/index.scss');
-const myApp = {
-  baseUrl: 'http://tic-tac-toe.wdibos.com',
-};
+
 
 let winner;
 let player = 'X';
@@ -22,8 +20,8 @@ let games = 0;
 //Starts the game and clears message and gameboard
 let gameStatus = 'active';
 $("button").on('click', function() {
-  $('.messages').text('');
-  $('.box').text('');
+  $('.messages').html('');
+  $('.box').html('');
   gameStatus = 'active';
 });
 
@@ -35,15 +33,13 @@ let switchPlayer = function(){
 let move = function() {
   $('.box').on('click', function() {
     if (gameStatus ==='active'){
-      if ($(this).text() !== '') {
-        $('.messages').text('Click Another Box!');
+      if ($(this).html() !== '') {
+        $('.messages').html('Click Another Box!');
         switchPlayer();//put this here, otherwise the move will repeat turn for last player
       } else if (player === 'X') {
-        $(this).text('X');
-        // apiAuth.updateGame(,'X');
+        $(this).html('X');
       } else {
-        $(this).text('O');
-        // apiAuth.updateGame(,'O');
+        $(this).html('O');
       }
       checkWin();
       apiAuth.updateGame(player, event.target.id);
@@ -56,15 +52,15 @@ let move = function() {
 let score = function() {
   if (winner === 'X') {
     xWins++;
-    $('#pX').text(xWins);
+    $('#pX').html(xWins);
   } else if (winner === 'O') {
     oWins++;
-    $('#pO').text(oWins);
+    $('#pO').html(oWins);
   } else if (winner ==='tie'){
     ties++;
-    $('#ties').text(ties);
+    $('#ties').html(ties);
   } games++;
-    // $('.getGames').text(games);
+    // $('.getGames').html(games);
 };
 
 //checks Box ID in html to match with the winning combination of cells
@@ -74,7 +70,7 @@ let $boxId = function(num) {
 };
 
 let checkWinCombo = function(a, b, c) {
-  if ($boxId(a).text() === player && $boxId(b).text() === player && $boxId(c).text() === player) {
+  if ($boxId(a).html() === player && $boxId(b).html() === player && $boxId(c).html() === player) {
     return true;
   } else {
     return false;
@@ -93,14 +89,14 @@ let checkWin = function() {
     checkWinCombo(2, 4, 6)) {
       winner = player;
       gameStatus = 'inactive';
-      $('.messages').text('Congrats! Player ' + player + ' Wins!');
+      $('.messages').html('Congrats! Player ' + player + ' Wins!');
       console.log ('Winning Game');
       score();
       apiAuth.createGame();
       apiAuth.getGames();
-    } else if ($('.box').text().length === 9 ){
+    } else if ($('.box').html().length === 9 ){
       winner = 'tie';
-      $('.messages').text('It\'s A Tie!');
+      $('.messages').html('It\'s A Tie!');
       console.log ('Tied Game');
       score ();
       apiAuth.createGame();
