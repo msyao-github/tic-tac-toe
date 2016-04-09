@@ -6,7 +6,7 @@ const myApp = {
   baseUrl: 'http://tic-tac-toe.wdibos.com',
 };
 
-let uiSignIn = require('./ui');
+let uiActions = require('./ui');
 
 
 // creates a new game when player signs in
@@ -78,7 +78,7 @@ let updateGame = function(player,index) {
 
 //sign up sign in change pw log out
 $(document).ready(() => {
-  uiSignIn.hideUi();
+  uiActions.hideUi();
   $('#sign-up-button').on('click', function(e) {
     e.preventDefault();
     var formData = new FormData($("#sign-up")[0]);
@@ -108,7 +108,7 @@ $(document).ready(() => {
     }).done(function(data) {
       myApp.user = data.user;
       // getGames();
-      uiSignIn.signInShowHide();
+      uiActions.signInShowHide();
       createGame();
       getGames();
       $('.score-number').empty();
@@ -154,8 +154,7 @@ $(document).ready(() => {
       },
     }).done(function(data) {
       console.log(data);
-      $('.messages').text('');
-      $('.box').text('');
+      uiActions.clearBoard();
     }).fail(function(jqxhr) {
       console.error(jqxhr);
     });

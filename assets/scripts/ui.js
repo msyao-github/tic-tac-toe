@@ -18,8 +18,13 @@ let signInShowHide = function (){
   $('#logout-nav').show();
 };
 
+let clearBoard = function (){
+  $('.messages').text('');
+  $('.box').text('');
+};
 
 module.exports = {
   hideUi,
-  signInShowHide
+  signInShowHide,
+  clearBoard
 };
